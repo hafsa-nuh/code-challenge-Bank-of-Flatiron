@@ -24,7 +24,9 @@ function Transaction({id,date,description,category,amount,transactions,setTransa
       <td>{description}</td>
       <td>{category}</td>
       <td>{amount}</td>
+      <td>
         <button onClick={deleteTransaction}>Delete</button>
+        </td> 
     </tr>
   );
 }
