@@ -85,11 +85,18 @@
       "amount": -975
     },
     {
-      "date": "2022-09-21",
+      "date": "2022-09-16",
       "description": "phone",
       "category": "bill",
-      "amount": "78",
-      "id": 13
+      "amount": "700",
+      "id": 14
+    },
+    {
+      "date": "2022-09-21",
+      "description": "Hosi",
+      "category": "Bill",
+      "amount": "80",
+      "id": 15
     }
   ]
 }

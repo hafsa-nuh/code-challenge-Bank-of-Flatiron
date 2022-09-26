@@ -4,6 +4,8 @@ import Search from "./Search";
 import AddTransactionForm from "./AddTransactionForm";
 
 function AccountContainer() {
+  // making the url a prop fot the child components
+  const url = "http://localhost:8001/transactions";
   const [transactions, setTransactions] = useState([]);
   const [search, setSearch] = useState("");
 
@@ -13,11 +15,13 @@ function AccountContainer() {
       <AddTransactionForm
         transactions={transactions}
         setTransactions={setTransactions}
+        url={url}
       />
       <TransactionsList
         transactions={transactions}
         setTransactions={setTransactions}
         search={search}
+        url={url}
       />
     </div>
   );

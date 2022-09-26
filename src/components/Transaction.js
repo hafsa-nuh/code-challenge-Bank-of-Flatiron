@@ -1,11 +1,13 @@
 import React from "react";
 
 // for the deleting method we need to delete by ID
-function Transaction({id,date,description,category,amount,transactions,setTransactions,
+function Transaction({id,date,description,category,amount,transactions,setTransactions, url
 }){
-  // when i tried to pass the url from parent to childe the delete method didnt work
+  // console.log(typeof url)
+  // when i tried to pass the url from parent to child the delete method didnt work
+  // had to interpole the url for it to work
   const deleteTransaction=()=>{
-    fetch(` http://localhost:8001/transactions/${id}`, {
+    fetch(`${url}/${id}`, {
       method: "DELETE",
     })
       .then((resp) => resp.json())
@@ -22,9 +24,7 @@ function Transaction({id,date,description,category,amount,transactions,setTransa
       <td>{description}</td>
       <td>{category}</td>
       <td>{amount}</td>
-      {/* <td> */}
         <button onClick={deleteTransaction}>Delete</button>
-      {/* </td> */}
     </tr>
   );
 }

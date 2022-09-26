@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import Transaction from "./Transaction";
 
-const url = "http://localhost:8001/transactions";
-function TransactionsList({transactions,setTransactions,search}) {
+function TransactionsList({transactions,setTransactions,search, url}) {
   
   // fetching the transaction data
   const fetchTransaction = async () => {
@@ -18,6 +17,7 @@ function TransactionsList({transactions,setTransactions,search}) {
   // filtering throu the data for the search 
   const filteredTransactions = transactions.filter((transaction) =>(
     // console.log(transaction)
+    // making the transaction accessible even in ALL CASES
     transaction.description.toLowerCase().includes(search.toLowerCase())
   ));
 
@@ -37,6 +37,7 @@ function TransactionsList({transactions,setTransactions,search}) {
               {...transaction}
               transactions={transactions}
               setTransactions={setTransactions}
+              url={url}
             />
           );
         })}

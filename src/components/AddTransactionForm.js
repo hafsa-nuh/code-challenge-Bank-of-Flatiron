@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 
-const url = "http://localhost:8001/transactions";
-function AddTransactionForm({ transactions, setTransactions }) {
-  console.log(transactions)
+function AddTransactionForm({ transactions, setTransactions, url }) {
+  // console.log(transactions);
   // leaving the object values blank
   const [addTransactionForm, setAddTransactionForm] = useState({
     date: "",
     description: "",
     category: "",
-    amount: ''
+    amount: "",
   });
 
   // onchange
@@ -22,15 +21,15 @@ function AddTransactionForm({ transactions, setTransactions }) {
   };
 
   // POST method inside the handleSubmit function
-  const handleSubmit = (e)=>{
-    e.preventDefault()
+  const handleSubmit = (e) => {
+    e.preventDefault();
     fetch(url, {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify( addTransactionForm),
+      body: JSON.stringify(addTransactionForm),
     })
       .then((respon) => respon.json())
       .then((data) => {
@@ -38,16 +37,20 @@ function AddTransactionForm({ transactions, setTransactions }) {
         const newData = [...transactions, data];
         // console.log("hafsa"+newData)
         setTransactions(newData);
-      })
-  }
+      });
+    // reset() method == to clear the values of all input fields in the form.
+    e.target.reset();
+  };
+
   return (
     <div className="ui segment">
-      <form className="ui form" onSubmit={handleSubmit} >
+      <form className="ui form" onSubmit={handleSubmit}>
         <div className="inline fields">
           <input type="date" name="date" onChange={handleChange} />
           <input
             type="text"
             name="description"
+            // value= {description}
             placeholder="Description"
             onChange={handleChange}
           />
